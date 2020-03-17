@@ -1,0 +1,89 @@
+<html>
+<header>
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css"
+    integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+  <script src="jsencrypt.js"></script>
+
+  <style>
+    body {
+      padding: 40px;
+      font-family: monospace;
+    }
+
+    .wide {
+      width: 530px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    .change-animation {
+      animation: pulse 0.5s 1;
+    }
+
+    @keyframes pulse {
+      0% {
+        background-color: rgb(230, 255, 230);
+      }
+
+      100% {
+        background-color: #eee;
+      }
+    }
+  </style>
+</header>
+
+<body>
+  <h1 id="test">Settle API PKCS#1 1.5 signature generator</h1>
+  <div class="pure-form  pure-form-aligned">
+
+    <div class="pure-control-group">
+      <label for="merchant_id">Merchant ID</label>
+      <input type="text" name="merchant_id" id="merchant_id"></input>
+    </div>
+
+    <div class="pure-control-group">
+      <label for="api_user">API User</label>
+      <input type="text" name="api_user" id="api_user"></input>
+    </div>
+
+    <div class="pure-control-group">
+      <label for="private_key">Private key</label>
+      <textarea name="private_key" id="private_key" cols="70" rows="15"></textarea>
+    </div>
+
+    <div class="pure-control-group">
+      <label for="method">Method</label>
+      <input type="text" name="method" id="method"></input>
+    </div>
+
+    <div class="pure-control-group">
+      <label for="url">URL</label>
+      <input class='wide' type="text" name="url" id="url" cols="70"></input>
+    </div>
+
+    <div class="pure-control-group">
+      <label for="body">Request body</label>
+      <textarea name="body" id="body" cols="70" rows="10"></textarea>
+      <span class="pure-form-message-inline">Pro tip:<br />Will autogenrate headers on focus lost</span>
+    </div>
+
+    <div class="pure-control-group">
+      <label for="bulk_headers">Bulk headers</label>
+      <textarea class="change-animation" name="bulk_headers" id="bulk_headers" cols="70" rows="15" readonly></textarea>
+      <span class="pure-form-message-inline">Pro tip:<br />Click text area to copy headers</span>
+    </div>
+
+    <div class="pure-control-group">
+      <label for="generate"></label>
+      <button class="pure-button" id="generate">Generate headers!</button>
+    </div>
+
+  </div>
+
+  <script src="index.js"></script>
+</body>
+
+</html>
