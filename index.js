@@ -14,12 +14,12 @@ function generateId(len) {
 // getAukaTimestamp :: Void -> String
 function getAukaTimestamp() {
   const d = new Date();
-  const fYear = d.getFullYear().toString()
-  const month = (d.getMonth()+1).toString()
-  const day = d.getDate().toString()
-  const hours = d.getHours().toString()
-  const minutes = (parseInt(d.getMinutes())).toString()
-  const seconds = (parseInt(d.getSeconds())).toString()
+  const fYear = d.getUTCFullYear().toString()
+  const month = (d.getUTCMonth()+1).toString()
+  const day = d.getUTCDate().toString()
+  const hours = d.getUTCHours().toString()
+  const minutes = (parseInt(d.getUTCMinutes())).toString()
+  const seconds = (parseInt(d.getUTCSeconds())).toString()
 
   const fMonth = month.length == 2 ? month : `0${month}`
   const fDay = day.length == 2 ? day : `0${day}`
