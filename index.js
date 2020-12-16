@@ -67,42 +67,14 @@ function copyToClipboard(event) {
   window.getSelection().removeAllRanges()
 }
 
-const examplePrivateKey =
-`-----BEGIN RSA PRIVATE KEY-----
-MIICXQIBAAKBgQCotJXYCo9VPuS1qjBRPAP5jAN9Wj8qmYnKMy31w81jiL3QegVQ/w6pCoy3
-WdLdVRxBSV4bCcMEAbhHXKgzpX+vB2P6sbmFJkucu1RQMHs9B7JevixVKowdl+U4QooFbtr2
-JgBFeC4DMIADvBzzEbvKHRRU7hyhDVDjDmrQtC2nlwsfIDAiQABAocGAVCx+EyP5rgPKY2W9
-cHYjfqQekFFOlpbG2K5sagjPVW5Hu6qzbjyaCKlcvSwBxFKxM0mfD9PjYLFb1tUBqdlyBQFk
-v6jwIi7Xt0hErX6lcCuSFckM3/P3pC2w952v47HA35zdqC1aYW4bKqQ+cGfDqQI8eUFI4kUg
-Quw4cAkCQQD2BP6gxasdSEQhkcfaHmxuJGVH5DGHcZ7krG5zjd8CEAACShPS0cL71gkzVTX0
-3FYwLW8z6Z+tMGwZRxgDKKyTAkEAr4nlXVzDJJbfP0fJfOnXUyT4XcFu/iw0HRRknaqn79J3
-uWSCKqDGbS3cgXCYlrcGrIMWQjNDiiE1+1EWk0qw4wsd/bQJBANEbfbH43BnHiDxR+N3uGw+
-9XrJhvLPT3b6C/wLM3N1d/MTGgC3xFjuPKN5EWdk8zby+RQdMwnkGlj82IUvSBR5gwQcLbg6
-JkRyc02S0eZCvONK5VBAk6q5TRo6zJqaCnVunOwqoxdTrNOLRNvMiG9OLECQcC5/lBgLfwjS
-jFUCQQCEKcuxG/huGU5PuNRKA5TfpOE9l0cquiI9613YdbbUszc19PWXFywu5ttHzp29y3jE
-5YKEFh8qz9a4GK5ejcIr
------END RSA PRIVATE KEY-----`
-
-const exampleBody =
-`{
-  "payer": "abc123",
-  "payee": "msisdn:47123456789",
-  "idempotency_id": ${generateId()},
-  "currency": "NOK",
-  "amount": 1000,
-  "require_identified": "True",
-  "chat_text": "Some text",
-  "expires_in": 120
-}`;
-
 // setDefaultValues :: Void
 function setDefaultValues() {
-  const method = 'POST'
-  const url = 'https://api.sandbox.settle.eu/merchant/v1/payment_request/'
-  const merchantID = 'abc123'
-  const apiUser = 'xyz789'
-  const privateKey = examplePrivateKey
-  const body = exampleBody
+  const method = ''
+  const url = ''
+  const merchantID = ''
+  const apiUser = ''
+  const privateKey = ''
+  const body = ''
 
   document.getElementById('private_key').value = privateKey
   document.getElementById('method').value = method
