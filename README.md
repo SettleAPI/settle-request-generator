@@ -1,12 +1,14 @@
 # Settle Request Generator
-This small utility can be used to help with testing the `KEY` authentication method for integration with the Settle API. It generates the correct headers for a signed request using the request parameters and a private key. 
+
+This small utility can be used to help with testing the `KEY` authentication method for integration with the Settle API. It generates the correct headers for a signed request using the request parameters and a private key.
 
 ## Try it here
 
-https://settleapi.github.io/settle-request-generator
+<https://settleapi.github.io/settle-request-generator>
 
 ## Authentication with the Settle API
-Please visit the [Settle API documentation](https://developer.settle.eu/authentication.html) for more information on the two types of authentication, `SECRET` and `KEY`. 
+
+Please visit the [Settle API documentation](https://developer.settle.eu/authentication.html) for more information on the two types of authentication, `SECRET` and `KEY`.
 
 The api credentials are managed in the [Settle Business portal](https://business.settle.eu/) (a [sandbox version](https://business.sandbox.settle.eu/) is also available) under the *Integration* tab.
 
@@ -15,6 +17,7 @@ To get started you can just let Settle generate the key-pair for you, but please
 You can also generate your own key and just upload the public part to Settle.
 
 ### Generate RSA private key
+
 ```bash
 openssl genrsa -des -out private.pem 2048
 ```
@@ -25,22 +28,24 @@ You'll have to to enter a passphrase. Under appropriate conditions (noninteracti
 openssl rsa -in private.pem -out private.pem
 ```
 
-
 ### Generate RSA public key
 
 ```bash
 openssl rsa -in private.pem -outform PEM -pubout -out public.pem
 ```
 
-
 ## Field data examples
 
-* **Merchant ID**: `abc123`
-* **API key ID**: `xyz789`
-* **Method**: `POST`
-* **URL**: `https://api.sandbox.settle.eu/merchant/v1/payment_request/`
+### For default use with `X-Auka-User`
+
+* **X-Auka-Merchant**: `abc123`
+* **X-Auka-User**: `xyz789`
+* **REST API Method**: `POST`
+* **REST API Endpoint URL**: `https://api.sandbox.settle.eu/merchant/v1/payment_request/`
 * **Request body**:
-```{
+  
+```
+{
   "payer": "abc123",
   "payee": "msisdn:47123456789",
   "idempotency_id": "04449a4866",
@@ -51,7 +56,9 @@ openssl rsa -in private.pem -outform PEM -pubout -out public.pem
   "expires_in": 120
 }
 ```
-* **Private keyfor** `xyz789`:
+
+* Private RSA key for **X-Auka-User** `xyz789`:
+
 ```
 -----BEGIN RSA PRIVATE KEY-----
 MIICXQIBAAKBgQCotJXYCo9VPuS1qjBRPAP5jAN9Wj8qmYnKMy31w81jiL3QegVQ/w6pCoy3
@@ -69,5 +76,47 @@ jFUCQQCEKcuxG/huGU5PuNRKA5TfpOE9l0cquiI9613YdbbUszc19PWXFywu5ttHzp29y3jE
 -----END RSA PRIVATE KEY-----
 ```
 
+### For integrator use with `X-Auka-Integrator`
+
+* **X-Auka-Merchant**: `fzkmhy0q`
+* **X-Auka-Integrator**: `7e3cbb17`
+* **REST API Method**: `POST`
+* **REST API Endpoint URL**: `https://api.sandbox.settle.eu/merchant/v1/payment_request/`
+* **Request body**:
+  
+```
+{
+  "payer": "fzkmhy0q",
+  "payee": "msisdn:47123456789",
+  "idempotency_id": "04449a4866",
+  "currency": "NOK",
+  "amount": 1000,
+  "require_identified": "True",
+  "chat_text": "Some text",
+  "expires_in": 120
+}
+```
+
+### Private RSA key
+
+For **X-Auka-Integrator** `7e3cbb17`:
+
+```
+-----BEGIN RSA PRIVATE KEY-----
+MIICWgIBAAKBgGeEsepm1Dm0LMW9H4cgO8+RpyiQh6JcWKlKfGZahTo3iXq55wGh
+DLOHVP1i5ULPuz8IA3HG1W481AlBeIvT/fmlKy/zjNUebAClvujpKjMRkn2p0Npg
+kyC4b17ZtoEkmixM2SrVhxBpy1PJoLFNKILqOGF+nFJ3Du/AEDOTNMrzAgMBAAEC
+gYAJYriW3hfj23grvYf8Qmnp2fTj8qa5i9HmF4DL7u0haCOo4u4U8bsrE9wa1Tqg
+IiGCB4H4cOStCArZg/wgAWqHeHKyn5+U74hbUnVMwj79zPgySJ/olFtrMptS8Jwe
+28zGDua91T7a8y/12HY+a4EGQd/K6S8z3lgnMBFcebI84QJBAKS1wVM0Nu4RZmSS
+50GWWui3sdHxe8OxyyiDUdBxajTuIuIH7/A6SOILRGs7cSF3ST9BVk0Lsx+jejvE
+rg30E9sCQQCg5KBqp93nZs0ky+DuVK63HYVo9+AF6r7bNXvvX9L0V0FaaUgqdjeL
+aonhBQ0VvmtCya+6poyptSbAVEmA09zJAkBI6VhaD6wdOMCd1tXeF8PIbsCdkgta
+dpLbLT6DSiFcqunwKtlQ+0wWHCy+V0LeMKLRCIg+dOZnJAPQ/2CZNqmvAkAl2yVT
+cwPnOmzyR3Y5HXuuYifNtuTi/4TAlyj9/ZHpI86gszzjoMUY7IxcgY++mfsqz8Gl
+LSLTm2fuwOY6hZ7hAkAmww+iGigsQK/qFUenQ1afn9hQxsLrriOgBKNZygqFBHh4
+4u6VK3BHZuYEpMcEzY6JSEKxucN7rZ8CulNO9A0w
+-----END RSA PRIVATE KEY-----
+```
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/a7197edc-db66-4a23-b006-657a5868fdbf/deploy-status)](https://app.netlify.com/sites/settle-request-generator/deploys)
