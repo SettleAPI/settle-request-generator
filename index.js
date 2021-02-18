@@ -95,6 +95,7 @@ function integratorFalse() {
   document.getElementById("controllGroupIntegrator").style.display = "none";
   isIntegrator = false;
   // console.log(isIntegrator);
+  generateHeaders();
 }
 
 function integratorTrue() {
@@ -102,6 +103,7 @@ function integratorTrue() {
   document.getElementById("controllGroupIntegrator").style.display = "block";
   isIntegrator = true;
   // console.log(isIntegrator);
+  generateHeaders();
 }
 
 // generateHeaders :: Void

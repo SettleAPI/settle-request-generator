@@ -70,3 +70,4 @@ jFUCQQCEKcuxG/huGU5PuNRKA5TfpOE9l0cquiI9613YdbbUszc19PWXFywu5ttHzp29y3jE
 ```
 
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a7197edc-db66-4a23-b006-657a5868fdbf/deploy-status)](https://app.netlify.com/sites/settle-request-generator/deploys)
