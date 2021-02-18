@@ -23,6 +23,10 @@
       animation: pulse 0.5s 1;
     }
 
+    .pure-form-aligned .pure-control-group label {
+      width: 11em;
+    }
+
     @keyframes pulse {
       0% {
         background-color: rgb(230, 255, 230);
@@ -40,17 +44,38 @@
   <div class="pure-form  pure-form-aligned">
 
     <div class="pure-control-group">
-      <label for="merchant_id">Merchant ID</label>
+      <label for="merchant_id">X-Auka-Merchant</label>
       <input type="text" name="merchant_id" id="merchant_id"></input>
     </div>
 
-    <div class="pure-control-group">
-      <label for="api_user">API key ID</label>
+    <p>Is an Integrator acting as a proxy on behalf of a Merchant client?</p>
+    <div class="pure-u-1-2">
+      <div class="pure-u-1-8">
+        <label for="is-integrator-false" class="pure-radio">
+            <input type="radio" id="is-integrator-false" name="optionsRadios" value="integratorFalse" checked="" onclick="integratorFalse();" /> No
+        </label>
+        </fieldset>
+      </div>
+      <div class="pure-u-1-8">
+        <label for="is-integrator-true" class="pure-radio">
+            <input type="radio" id="is-integrator-true" name="optionsRadios" value="integratorTrue" onclick="integratorTrue();" /> Yes
+        </label>
+        </fieldset>
+      </div>
+    </div>
+
+    <div class="pure-control-group" id="controllGroupApiUser">
+      <label for="api_user">X-Auka-User</label>
       <input type="text" name="api_user" id="api_user"></input>
     </div>
 
+    <div class="pure-control-group integrator" id="controllGroupIntegrator">
+      <label for="X_Auka_Integrator">X-Auka-Integrator</label>
+      <input type="text" name="X_Auka_Integrator" id="X_Auka_Integrator"></input>
+    </div>
+
     <div class="pure-control-group">
-      <label for="private_key">Private key</label>
+      <label for="private_key">Private RSA key</label>
       <textarea name="private_key" id="private_key" cols="70" rows="15"></textarea>
     </div>
 
