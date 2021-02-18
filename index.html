@@ -24,7 +24,7 @@
     }
 
     .pure-form-aligned .pure-control-group label {
-      width: 11em;
+      width: 13em;
     }
 
     @keyframes pulse {
@@ -42,26 +42,23 @@
 <body>
   <h1 id="test">Settle API PKCS#1 1.5 signature generator</h1>
   <div class="pure-form  pure-form-aligned">
-
-    <div class="pure-control-group">
-      <label for="merchant_id">X-Auka-Merchant</label>
-      <input type="text" name="merchant_id" id="merchant_id"></input>
-    </div>
-
     <p>Is an Integrator acting as a proxy on behalf of a Merchant client?</p>
     <div class="pure-u-1-2">
       <div class="pure-u-1-8">
         <label for="is-integrator-false" class="pure-radio">
             <input type="radio" id="is-integrator-false" name="optionsRadios" value="integratorFalse" checked="" onclick="integratorFalse();" /> No
         </label>
-        </fieldset>
       </div>
       <div class="pure-u-1-8">
         <label for="is-integrator-true" class="pure-radio">
             <input type="radio" id="is-integrator-true" name="optionsRadios" value="integratorTrue" onclick="integratorTrue();" /> Yes
         </label>
-        </fieldset>
       </div>
+    </div>
+    <hr /><br />
+    <div class="pure-control-group">
+      <label for="merchant_id">X-Auka-Merchant</label>
+      <input type="text" name="merchant_id" id="merchant_id"></input>
     </div>
 
     <div class="pure-control-group" id="controllGroupApiUser">
@@ -80,12 +77,12 @@
     </div>
 
     <div class="pure-control-group">
-      <label for="method">Method</label>
+      <label for="method">REST API Method</label>
       <input type="text" name="method" id="method"></input>
     </div>
 
     <div class="pure-control-group">
-      <label for="url">URL</label>
+      <label for="url">REST API Endpoint URL</label>
       <input class='wide' type="text" name="url" id="url" cols="70"></input>
     </div>
 
