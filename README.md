@@ -36,10 +36,10 @@ openssl rsa -in private.pem -outform PEM -pubout -out public.pem
 
 ## Field data examples
 
-### For default use with `X-Auka-User`
+### For regular merchant
 
-* **X-Auka-Merchant**: `abc123`
-* **X-Auka-User**: `xyz789`
+* **Merchant ID**: `abc123`
+* **API User/Key ID**: `xyz789`
 * **REST API Method**: `POST`
 * **REST API Endpoint URL**: `https://api.sandbox.settle.eu/merchant/v1/payment_request/`
 * **Request body**:
@@ -57,7 +57,7 @@ openssl rsa -in private.pem -outform PEM -pubout -out public.pem
 }
 ```
 
-* Private RSA key for **X-Auka-User** `xyz789`:
+* Private RSA key for **API User/Key ID**: `xyz789`:
 
 ```
 -----BEGIN RSA PRIVATE KEY-----
@@ -76,10 +76,10 @@ jFUCQQCEKcuxG/huGU5PuNRKA5TfpOE9l0cquiI9613YdbbUszc19PWXFywu5ttHzp29y3jE
 -----END RSA PRIVATE KEY-----
 ```
 
-### For integrator use with `X-Auka-Integrator`
+### For integrator (using `X-Settle-Integrator`)
 
-* **X-Auka-Merchant**: `fzkmhy0q`
-* **X-Auka-Integrator**: `7e3cbb17`
+* **Merchant ID**: `fzkmhy0q`
+* **Integrator ID**: `7e3cbb17`
 * **REST API Method**: `POST`
 * **REST API Endpoint URL**: `https://api.sandbox.settle.eu/merchant/v1/payment_request/`
 * **Request body**:
@@ -99,7 +99,7 @@ jFUCQQCEKcuxG/huGU5PuNRKA5TfpOE9l0cquiI9613YdbbUszc19PWXFywu5ttHzp29y3jE
 
 ### Private RSA key
 
-For **X-Auka-Integrator** `7e3cbb17`:
+For **Integrator ID**: `7e3cbb17`:
 
 ```
 -----BEGIN RSA PRIVATE KEY-----
