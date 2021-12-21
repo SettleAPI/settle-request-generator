@@ -145,8 +145,8 @@ function generateHeaders() {
   const element = document.getElementById('bulk_headers');
   void triggerAnimation(element);
 
-  if (isIntegrator == false) {
-      console.log('Generating hedears with X-Auka-User');
+  if (isIntegrator === false) {
+      console.log('Generating hedears with X-Settle-User');
 
       const privateKey = document.getElementById('private_key').value;
       const method = document.getElementById('method').value;
@@ -157,21 +157,21 @@ function generateHeaders() {
       const body = document.getElementById('body').value;
       const bodyHash = getHash(body);
       const contentDigest = `SHA256=${bodyHash}`;
-      const headers = `X-AUKA-CONTENT-DIGEST=${contentDigest}&X-AUKA-MERCHANT=${merchantID}&X-AUKA-TIMESTAMP=${timestamp}&X-AUKA-USER=${apiUser}`;
+      const headers = `X-SETTLE-CONTENT-DIGEST=${contentDigest}&X-SETTLE-MERCHANT=${merchantID}&X-SETTLE-TIMESTAMP=${timestamp}&X-SETTLE-USER=${apiUser}`;
       const message = `${method}|${url}|${headers}`;
       const signature = getSignedMessage(privateKey, message);
       const authorization = 'RSA-SHA256 ' + signature;
       const bulkHeaders = `Accept:application/vnd.mcash.api.merchant.v1+json
 Content-Type:application/json
-X-Auka-Merchant:${merchantID}
-X-Auka-User:${apiUser}
-X-Auka-Timestamp:${timestamp}
-X-Auka-Content-Digest:${contentDigest}
+X-Settle-Merchant:${merchantID}
+X-Settle-User:${apiUser}
+X-Settle-Timestamp:${timestamp}
+X-Settle-Content-Digest:${contentDigest}
 Authorization:${authorization}`;
 
       element.value = bulkHeaders;
   } else {
-      console.log('Generating hedears with X-Auka-Integrator');
+      console.log('Generating hedears with X-Settle-Integrator');
 
       const privateKey = document.getElementById('private_key').value;
       const method = document.getElementById('method').value;
@@ -182,16 +182,16 @@ Authorization:${authorization}`;
       const body = document.getElementById('body').value;
       const bodyHash = getHash(body);
       const contentDigest = `SHA256=${bodyHash}`;
-      const headers = `X-AUKA-CONTENT-DIGEST=${contentDigest}&X-AUKA-INTEGRATOR=${integratorID}&X-AUKA-MERCHANT=${merchantID}&X-AUKA-TIMESTAMP=${timestamp}`;
+      const headers = `X-SETTLE-CONTENT-DIGEST=${contentDigest}&X-SETTLE-INTEGRATOR=${integratorID}&X-SETTLE-MERCHANT=${merchantID}&X-SETTLE-TIMESTAMP=${timestamp}`;
       const message = `${method}|${url}|${headers}`;
       const signature = getSignedMessage(privateKey, message);
       const authorization = 'RSA-SHA256 ' + signature;
       const bulkHeaders = `Accept:application/vnd.mcash.api.merchant.v1+json
 Content-Type:application/json
-X-Auka-Merchant:${merchantID}
-X-Auka-Integrator:${integratorID}
-X-Auka-Timestamp:${timestamp}
-X-Auka-Content-Digest:${contentDigest}
+X-Settle-Merchant:${merchantID}
+X-Settle-Integrator:${integratorID}
+X-Settle-Timestamp:${timestamp}
+X-Settle-Content-Digest:${contentDigest}
 Authorization:${authorization}`;
 
       element.value = bulkHeaders;
